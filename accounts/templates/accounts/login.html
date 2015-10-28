@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="pure-g-r content-ribbon">
+    <div class="pure-u-1">
+    {% if user.is_authenticated %}
+    <h2>You are already in the system, bro.</h2>
+    {% else %}
+        <h2>Fill the form accordingly</h2>
+        <form class="pure-form pure-form-stacked" method="post">
+            {% csrf_token %}
+            <fieldset>
+                {{ form.non_field_errors }}
+                {% for field in form %}
+                <div class="pure-control-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {{ field.errors }}
+                </div>
+                {% endfor %}
+                <div class="pure-controls">
+                    <button type="submit" class="pure-button pure-button-primary">Sign In</button>
+                </div>
+            </fieldset>
+            <p>
+                Doesn't hava an account? <a href="{% url 'accounts:register' %}" title="">Sign Up</a><br/>
+                <!-- Forgot your password? <a href="" title="">Nova senha</a> <br /> !-->
+            </p>
+        </form>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

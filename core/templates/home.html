@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="splash">
+    <div class="pure-g-r">
+        <div class="pure-u-1">
+            <div class="l-box splash-text">
+                <h1 class="splash-head">
+                    Get productive! 
+                </h1>
+                <h2 class="splash-subhead">
+                    This task manager will help you to get things done, finally.
+                </h2>
+                <p>
+                    <a href="{% url 'accounts:register' %}" class="pure-button primary-button">Join us
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pure-g-r content-ribbon">
+    <div class="pure-u-2-3">
+        <div class="l-box">
+            <h4 class="content-subhead">Todo lists are fun!</h4>
+            <h3>Organize your tasks</h3>
+            <p>
+                Just to do it lets you to organize your tasks accordingly, lets you filter by tags, warns you if I have a passed due date, and so on.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

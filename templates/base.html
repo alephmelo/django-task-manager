@@ -1,0 +1,34 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Just To Do It - A django-powered task manager." />
+    <title>JTDI - Just to do it</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+</head>
+<body>
+<div class="header">
+    <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
+        <a class="pure-menu-heading" href="{% url 'core:home' %}">Just to do it!</a>
+        <ul>
+            <li class="pure-menu-selected"><a href="{% url 'core:home' %}">Home</a></li>
+            <li><a href="{% url 'core:contact' %}">Contact</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'accounts:logout' %}">Sign Out</a></li>
+            {% else %}
+            <li><a href="{% url 'accounts:login' %}">Sign In</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+<div class="content">
+    {% block content %}
+    {% endblock %}
+    <footer class="footer">Just To Do It - A django-powered task manager.</footer>
+</div>
+<script src="http://yui.yahooapis.com/3.12.0/build/yui/yui-min.js"></script>
+</body>
+</html>
