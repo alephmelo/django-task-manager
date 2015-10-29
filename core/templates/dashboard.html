@@ -1,4 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Dashboard stuff.</h1>
-{% endblock %}
+<div class="pure-g-r content-ribbon">
+    <div class="pure-u-1">
+      <h1>Your tasks</h1>
+    <table class="pure-table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Tags</th>
+                <th>Due Date</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for result in results %}
+            <tr>
+                <td>{{ result.title}}</td>
+                <td> {{result.tags.names|join:", "}}</td>
+                <td>{{ result.due_date}}</td>
+            </tr>
+    {% endfor %}
+    {% endblock %}
+  </div>
+</div>
