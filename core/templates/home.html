@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
+{% if user.is_authenticated %}
+{% include "dashboard.html" %}
+{% else %}
 <div class="splash">
     <div class="pure-g-r">
         <div class="pure-u-1">
@@ -29,4 +32,5 @@
         </div>
     </div>
 </div>
+{% endif %}
 {% endblock %}
