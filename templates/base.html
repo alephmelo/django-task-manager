@@ -12,9 +12,17 @@
 <body>
 <div class="header">
     <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
+        {% if user.is_authenticated %}
+        <a class="pure-menu-heading" href="{% url 'core:dashboard' %}">Just to do it!</a>
+        {% else %}
         <a class="pure-menu-heading" href="{% url 'core:home' %}">Just to do it!</a>
+        {% endif %}
         <ul>
+            {% if user.is_authenticated %}
+            <li class="pure-menu-selected"><a href="{% url 'core:dashboard' %}">Dashboard</a></li>
+            {% else %}
             <li class="pure-menu-selected"><a href="{% url 'core:home' %}">Home</a></li>
+            {% endif %}
             <li><a href="{% url 'core:contact' %}">Contact</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'accounts:logout' %}">Sign Out</a></li>
