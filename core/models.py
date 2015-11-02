@@ -3,7 +3,7 @@ from django.db import models
 from taggit.managers import TaggableManager
 
 class Task(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, null=True)
     title = models.CharField(max_length=500)
     tags = TaggableManager()
     due_date = models.DateField()
