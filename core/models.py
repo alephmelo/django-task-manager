@@ -8,5 +8,8 @@ class Task(models.Model):
     tags = TaggableManager()
     due_date = models.DateField()
 
+    class Meta:
+    	ordering = ['-due_date']
+
     def __str__(self):
         return self.title
