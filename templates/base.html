@@ -3,32 +3,58 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Just To Do It - A django-powered task manager." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Just To Do It - A django-powered task manager." />
     <title>JTDI - Just to do it</title>
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+<link rel="stylesheet" href="{% static 'css/email.css' %}" />
 </head>
 <body>
-<div class="header">
-    <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
-        <a class="pure-menu-heading" href="{% url 'core:home' %}">Just to do it!</a>
-        <ul>
-            <li class="pure-menu-selected"><a href="{% url 'core:home' %}">Home</a></li>
-            <li><a href="{% url 'core:contact' %}">Contact</a></li>
-            {% if user.is_authenticated %}
-            <li><a href="{% url 'accounts:logout' %}">Sign Out</a></li>
-            {% else %}
-            <li><a href="{% url 'accounts:login' %}">Sign In</a></li>
-            {% endif %}
-        </ul>
+<div id="layout" class="content pure-g">
+    <div id="nav" class="pure-u">
+        <a href="#" class="nav-menu-button">Menu</a>
+                    <div class="nav-inner">
+            <button class="primary-button pure-button">New Task</button>
+            <div class="pure-menu">
+                <ul class="pure-menu-list">                               
+    {% if user.is_authenticated %}
+        <li class="pure-menu-item"><a href="{% url 'core:dashboard' %}" class="pure-menu-link">Home</a></li>
+    {% else %}
+        <li class="pure-menu-item"><a href="{% url 'core:home' %}" class="pure-menu-link">Home</a></li>
+    {% endif %}
+        <li class="pure-menu-item"><a href="{% url 'core:contact' %}" class="pure-menu-link">Contact</a></li>
+    {% if user.is_authenticated %}
+        <li class="pure-menu-item"><a href="{% url 'accounts:logout' %}" class="pure-menu-link">Sign Out</a></li>
+    {% else %}
+        <li class="pure-menu-item"><a href="{% url 'accounts:login' %}" class="pure-menu-link">Sign In</a></li>
+    {% endif %}
+                </ul>
+            </div>
+        </div>
     </div>
-</div>
-<div class="content">
     {% block content %}
     {% endblock %}
-    <footer class="footer">Just To Do It - A django-powered task manager.</footer>
 </div>
-<script src="http://yui.yahooapis.com/3.12.0/build/yui/yui-min.js"></script>
+
+    
+    <!--<footer class="footer" id="footer">Just To Do It - A django-powered task manager.</footer>
+    !-->
+<script src="http://yui.yahooapis.com/3.17.2/build/yui/yui-min.js"></script>
+<script>
+    YUI().use('node-base', 'node-event-delegate', function (Y) {
+
+        var menuButton = Y.one('.nav-menu-button'),
+            nav        = Y.one('#nav');
+
+        // Setting the active class name expands the menu vertically on small screens.
+        menuButton.on('click', function (e) {
+            nav.toggleClass('active');
+        });
+
+        // Your application code goes here...
+
+    });
+</script>
+
 </body>
 </html>
