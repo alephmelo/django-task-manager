@@ -8,13 +8,14 @@
     <title>JTDI - Just to do it</title>
 <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 <link rel="stylesheet" href="{% static 'css/email.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/flatpickr.min.css' %}"/>
 </head>
 <body>
 <div id="layout" class="content pure-g">
     <div id="nav" class="pure-u">
         <a href="#" class="nav-menu-button">Menu</a>
                     <div class="nav-inner">
-            <button class="primary-button pure-button">New Task</button>
+            <button class="primary-button pure-button">Just to Do It!</button>
             <div class="pure-menu">
                 <ul class="pure-menu-list">                               
     {% if user.is_authenticated %}
@@ -39,7 +40,9 @@
     
     <!--<footer class="footer" id="footer">Just To Do It - A django-powered task manager.</footer>
     !-->
-<script src="http://yui.yahooapis.com/3.17.2/build/yui/yui-min.js"></script>
+<script src="{% static "js/yui-min.js" %}"></script>
+<script src="{% static "js/jquery.js" %}"></script>
+<script src="{% static "js/flatpickr.min.js" %}"></script>
 <script>
     YUI().use('node-base', 'node-event-delegate', function (Y) {
 
@@ -50,8 +53,10 @@
         menuButton.on('click', function (e) {
             nav.toggleClass('active');
         });
-
-        // Your application code goes here...
+        var example = flatpickr('#flatpickr', {
+            dateFormat: 'm/d/Y',
+            minDate: Date(),
+        });
 
     });
 </script>

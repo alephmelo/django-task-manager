@@ -24,7 +24,7 @@ def dashboard(request):
             new_task = form.save(commit=True)
             new_task.user = User.objects.get(username=request.user)
             new_task.save()
-            return render(request, 'dashboard.html', {'results': results})
+            return HttpResponseRedirect(reverse('core:home'))
     else:
         form = TaskForm()
 

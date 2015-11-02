@@ -28,4 +28,6 @@ python manage.py runserver
 -----------------------------------------------
 
 ### To do:
-* Create views and forms to add tasks
+* Create views and forms to add tasks ✅
+* Create view to edit task by id
+* Create view to delete task
