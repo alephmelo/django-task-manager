@@ -13,6 +13,10 @@ a {
     color: #1b98f8;
 }
 
+input {
+    width: 100%;
+}
+
 
 /*
  * -- HELPER STYLES --
@@ -273,8 +277,10 @@ a {
     /* This will now take up it's own column, so don't need position: fixed; */
     #main {
         position: static;
+        height: 100%;
         margin: 0;
         padding: 0;
+        width: 100%;
     }
 }
 

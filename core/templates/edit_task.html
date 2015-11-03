@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div id="main" class="pure-u-1">
+        <div class="email-content">
+            <div class="email-content-body">
+                <div class="pure-u-1-2">
+					<form class="pure-form pure-form-stacked" action="." method="post">{% csrf_token %}
+					{{form}}
+						<br><br>
+						<button type="submit" class="pure-button pure-button-primary">Save Task</button>
+						<a href="{%url 'core:home' %}" class="pure-button pure-button-secondary">Cancel</a>
+					</form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
