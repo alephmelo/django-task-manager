@@ -13,6 +13,10 @@ a {
     color: #1b98f8;
 }
 
+input {
+    width: 100%;
+}
+
 
 /*
  * -- HELPER STYLES --
@@ -111,6 +115,10 @@ a {
     color: rgb(75, 113, 151);
 }
 
+.email-count-late {
+    color: rgb(243, 21, 21);
+}
+
 .email-label-personal,
 .email-label-work,
 .email-label-travel {
@@ -152,6 +160,11 @@ a {
     .email-desc {
         font-size: 80%;
         margin: 0.4em 0;
+    }
+    .email-exc {
+        font-size: 80%;
+        margin: 0 0.4em;
+        color: red;
     }
 
 .email-item-selected {
@@ -273,8 +286,10 @@ a {
     /* This will now take up it's own column, so don't need position: fixed; */
     #main {
         position: static;
+        height: 100%;
         margin: 0;
         padding: 0;
+        width: 100%;
     }
 }
 
