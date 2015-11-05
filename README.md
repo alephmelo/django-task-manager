@@ -31,5 +31,6 @@ python manage.py runserver
 * Create views and forms to add tasks ✅
 * Create view to edit task by id ✅
 * Create view to delete task by id ✅
+* Differ tasks from users in the system. ✅
 * Create boolean attribute into Task Model to check if the task was finished
-* Differ tasks from users in the system.
+
