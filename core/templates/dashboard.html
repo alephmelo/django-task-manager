@@ -7,15 +7,17 @@
             <div class="pure-u-3-4">
             {% for result in results %}
                 {% if result.user == user %}
-                    {% if result.is_past_due %}
-                    <h5 class="email-name"><span class="email-count-late">{{ result.due_date}}</span></h5>
-                    {% else %}
-                    <h5 class="email-name"><span class="email-count">{{ result.due_date}}</span></h5>
+                    {% if result.is_complete == False %}
+                        {% if result.is_past_due %}
+                        <h5 class="email-name"><span class="email-count-late">{{ result.due_date}}</span></h5>
+                        {% else %}
+                        <h5 class="email-name"><span class="email-count">{{ result.due_date}}</span></h5>
+                        {% endif %}
+                        <h4 class="email-subject">{{ result.title}}</h4>
+                        <p class="email-desc">{{result.tags.names|join:", "}}</p>
+                        <a class="email-desc" href="/dashboard/edit-task/{{result.id}}">✎</a>
+                        <a class="email-exc" onclick="return confirm('You are about to delete: {{result.title}}. Do you wish to continue?')" href="/dashboard/delete-task/{{result.id}}">x</a>
                     {% endif %}
-                    <h4 class="email-subject">{{ result.title}}</h4>
-                    <p class="email-desc">{{result.tags.names|join:", "}}</p>
-                    <a class="email-desc" href="/dashboard/edit-task/{{result.id}}">✎</a>
-                    <a class="email-exc" onclick="return confirm('You are about to delete: {{result.title}}. Do you wish to continue?')" href="/dashboard/delete-task/{{result.id}}">x</a>
                 {% endif %}
             {% endfor %}
             </div>
