@@ -8,6 +8,7 @@ class Task(models.Model):
     title = models.CharField(max_length=500)
     tags = TaggableManager()
     due_date = models.DateField()
+    is_complete = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['-due_date']

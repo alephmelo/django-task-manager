@@ -22,7 +22,7 @@ class TaskForm(forms.ModelForm):
 class TaskEditForm(forms.ModelForm):
     class Meta:
             model = Task
-            fields = ['due_date', 'title']
+            fields = ['due_date', 'title', 'is_complete']
             exclude = ('user', 'tags')
             widgets = {
             'due_date': forms.TextInput(attrs={
