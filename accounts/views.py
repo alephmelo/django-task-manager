@@ -6,6 +6,12 @@ from django.conf import settings
 from .forms import RegisterForm
 
 def register(request):
+    """
+    Login view.
+
+    ``User``
+        An instance of User Model.
+    """
     template_name = 'accounts/register.html'
     if request.method == 'POST':
         form = RegisterForm(request.POST)

@@ -11,13 +11,22 @@ class Task(models.Model):
     is_complete = models.BooleanField(default=False)
 
     class Meta:
+        '''
+        Meta class to order taks.
+        '''
         ordering = ['-due_date']
 
     def __str__(self):
+        '''
+        String method returning self.title.
+        '''
         return self.title
-        
+
     @property
     def is_past_due(self):
+        '''
+        Propety to check if the date is pastself.
+        '''
         if date.today() > self.due_date:
             return True
         return False

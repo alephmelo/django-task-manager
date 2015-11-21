@@ -8,16 +8,28 @@ from .forms import TaskForm, TaskEditForm
 import datetime
 
 def home(request):
+    """
+    Display an individual home page.
+    """
     if request.user.is_authenticated():
         return dashboard(request)
     else:
         return render(request, 'home.html')
 
 def contact(request):
+    '''
+    Display contact page.
+    '''
     return render(request, 'contact.html')
 
 @login_required
 def dashboard(request):
+    """
+    Display dashboard
+
+    ``Task``
+        An instance of Task Model.
+    """
     results = Task.objects.all()
     nows = datetime.datetime.now()
     if request.method == 'POST':
@@ -34,6 +46,12 @@ def dashboard(request):
 
 @login_required
 def edit_task(request, id):
+    """
+    Display edit task template.
+
+    ``Task``
+        An instance of Task Model.
+    """
     task = get_object_or_404(Task, id=id)
     if request.method == 'POST':
         form = TaskEditForm(request.POST, instance=task)
@@ -48,6 +66,12 @@ def edit_task(request, id):
 
 @login_required
 def delete_task(request, id):
+    """
+    Delete task by id.
+
+    ``Task``
+        An instance of Task Model.
+    """
     task = get_object_or_404(Task, id=id)
     task.delete()
     return HttpResponseRedirect(reverse('core:dashboard'))
