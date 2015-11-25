@@ -25,7 +25,7 @@ class Task(models.Model):
     @property
     def is_past_due(self):
         '''
-        Propety to check if the date is pastself.
+        Propety to check if the date is past.
         '''
         if date.today() > self.due_date:
             return True
