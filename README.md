@@ -11,7 +11,7 @@ git clone git@github.com:alephmelo/django-task-manager.git
 ```
 * Install packages with pip
 ```
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 * Create database (Django default is sqlite3)
 ```
